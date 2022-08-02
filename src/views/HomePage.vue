@@ -17,24 +17,32 @@
       <div @click="dashboard">后台</div>
     </div>
     <n-divider />
-    <n-space style="margin-bottom: 20px;">
-      <n-input v-model:value="pageInfo.keyword" :style="{ width: '500px',}" placeholder="请输入关键字"/>
-      <n-button type="primary" ghost @click="loadBlogs(0)">搜索</n-button>
-
+    <div class="search">
+    <n-space style="margin-bottom: 20px" >
+      <n-input
+        v-model:value="pageInfo.keyword"
+        placeholder="请输入关键字"
+        class="search-input"
+      />
+      <n-button type="primary" ghost @click="loadBlogs(0)"  class="search-button">搜索</n-button>
     </n-space>
+    </div>
+
     <div
       v-for="blog in blogListInfo"
       :key="blog.id"
       style="margin-bottom: 20px"
     >
-      <n-card :title="blog.title" hoverable
-      @click="toDetail(blog)"
-      style="cursor:pointer;"
+      <n-card
+        :title="blog.title"
+        hoverable
+        @click="toDetail(blog)"
+        style="cursor: pointer"
       >
         {{ blog.content }}
         <template #footer>
           <n-space align="center">
-            <div style="font-size: 14px">发布时间：{{ blog.create_time }}</div>
+            <div  class="create-time" >发布时间：{{ blog.create_time }}</div>
           </n-space>
         </template>
       </n-card>
@@ -102,7 +110,7 @@ const pageInfo = reactive({
   pageCount: 0,
   count: 0,
   keyword: "",
-  categoryId:0
+  categoryId: 0,
 });
 
 const loadBlogs = async (page = 0) => {
@@ -128,15 +136,14 @@ const loadBlogs = async (page = 0) => {
     (pageInfo.count % pageInfo.pageSize > 0 ? 1 : 0);
 };
 
-const toDetail = ((blog)=>{
-  router.push({path:"/detail",query:{id:blog.id}})
-})
+const toDetail = (blog) => {
+  router.push({ path: "/detail", query: { id: blog.id } });
+};
 
-const searchCategory =(categoryId)=>{
-  pageInfo.categoryId = categoryId
+const searchCategory = (categoryId) => {
+  pageInfo.categoryId = categoryId;
   loadBlogs();
-}
-
+};
 </script>
 
 <style lang="less" scoped>
@@ -153,7 +160,7 @@ const searchCategory =(categoryId)=>{
     cursor: pointer;
     margin-right: 20px;
   }
-  & div:hover{
+  & div:hover {
     color: orange;
   }
 }
@@ -161,5 +168,31 @@ const searchCategory =(categoryId)=>{
   text-align: center;
   line-height: 25px;
   font-size: 16px;
+}
+
+.search-input {
+  width: 500px;
+}
+
+.create-time{
+  font-size: 14px;
+  color: gray;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    width: 95vw;
+    margin: 0 auto;
+  }
+
+  .search {
+    width: 95vh;
+    &-input {
+      width: 75vw;
+    }
+    // &-button{
+    //   width: 15vw;
+    // }
+  }
 }
 </style>

@@ -7,6 +7,7 @@ let routes = [
   { path: "/login", component: () => import("../views/Login.vue") },
   {
     path: "/dashboard",
+    redirect:"/dashboard/article",
     component: () => import("../views/dashboard/Dashboard.vue"),
     children: [
       {

@@ -83,4 +83,15 @@ const login = async () => {
   margin: 0 auto;
   margin-top: 130px;
 }
+
+
+@media screen and (max-width: 600px) {
+  .login-pane {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 130px;
+}
+
+}
+
 </style>

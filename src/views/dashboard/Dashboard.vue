@@ -7,7 +7,6 @@
           :key="index"
           @click="toPage(menu)"
           :title="menu.name"
-          style="font-size: 18px"
         >
         </n-anchor-link>
       </n-anchor>
@@ -39,6 +38,8 @@ let menus = [
 const toPage = (menu) => {
   if (menu.href == "logout") {
     router.push("/login");
+    //清理token
+    adminStore.token = "";
     message.info("退出成功");
   } else {
     router.push(menu.href);
@@ -56,10 +57,12 @@ const toPage = (menu) => {
   padding: 20px;
   box-sizing: border-box;
   overflow: hidden;
+
   border-right: solid 1px gray;
   :deep(.n-anchor-link__title) {
     text-align: center;
     margin-top: 20px;
+    font-size: 18px;
   }
 }
 .content {
@@ -67,5 +70,27 @@ const toPage = (menu) => {
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .main-panel {
+    display: block;
+  }
+
+  .menu {
+    width: 100vw;
+    height: 110px;
+    padding: 10px;
+    :deep(.n-anchor-link__title) {
+      text-align: left;
+      margin-top: 1px;
+      font-size: 16px;
+    }
+  }
+
+  .content {
+    padding: 10px;
+    box-sizing: border-box;
+  }
 }
 </style>

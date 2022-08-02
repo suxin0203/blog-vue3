@@ -173,13 +173,14 @@ const toPage = async (pageNum) => {
 };
 
 const toUpdate = async (blog) => {
-  tabValue.value = "update";
+
   let res = await axios.get(`/blog/detail?id=${blog.id}`);
   let { id, title, content, category_id } = res.data.rows[0];
   updateArticle.id = id;
   updateArticle.title = title;
   updateArticle.content = content;
   updateArticle.categoryId = category_id;
+    tabValue.value = "update";
 };
 
 const update = async () => {
