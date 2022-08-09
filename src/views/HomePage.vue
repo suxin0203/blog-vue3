@@ -180,9 +180,11 @@ const searchCategory = (categoryId) => {
 }
 
 @media screen and (max-width: 600px) {
+  html,body{
+    display: flex;
+  }
   .main {
     width: 95vw;
-    margin: 0 auto;
   }
 
   .search {
@@ -190,9 +192,6 @@ const searchCategory = (categoryId) => {
     &-input {
       width: 75vw;
     }
-    // &-button{
-    //   width: 15vw;
-    // }
   }
 }
 </style>
