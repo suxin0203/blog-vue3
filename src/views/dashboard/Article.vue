@@ -61,6 +61,14 @@
               placeholder="请输入标题"
             />
           </n-form-item>
+          <n-form-item label="ID">
+            <n-input-number
+            style="width: 100%;"
+              v-model:value="updateArticle.id"
+              :show-button="false"
+              placeholder="请输入id"
+            />
+          </n-form-item>
           <n-form-item label="分类">
             <n-select
               v-model:value="updateArticle.categoryId"
@@ -131,6 +139,7 @@ const loadBlogs = async () => {
     }月${d.getDate()}日`;
   }
   blogListInfo.value = temp_rows;
+  console.log(blogListInfo.value[0].id);
   pageInfo.count = res.data.data.count;
   pageInfo.pageCount =
     parseInt(pageInfo.count / pageInfo.pageSize) +
@@ -147,7 +156,8 @@ const loadCategorys = async () => {
     };
   });
   addArticle.categoryId = categoryOptions.value[0].value;
-  //   console.log(categoryOptions.value);
+  updateArticle.categoryId = categoryOptions.value[0].value;
+  console.log(categoryOptions.value);
 };
 
 onMounted(() => {
@@ -173,22 +183,29 @@ const toPage = async (pageNum) => {
 };
 
 const toUpdate = async (blog) => {
-
   let res = await axios.get(`/blog/detail?id=${blog.id}`);
   let { id, title, content, category_id } = res.data.rows[0];
   updateArticle.id = id;
   updateArticle.title = title;
   updateArticle.content = content;
   updateArticle.categoryId = category_id;
-    tabValue.value = "update";
+  tabValue.value = "update";
+  // console.log(updateArticle);
 };
 
 const update = async () => {
+  // console.log(updateArticle);
+  //   let res1 = await axios.get(
+  //   `/blog/search?keyword=${updateArticle.id}`
+  // );
+  // console.log(res1.data.data.rows);
+
   let res = await axios.put("/blog/_token/update", updateArticle);
   if (res.data.code == 200) {
     message.info(res.data.msg);
     loadBlogs();
     tabValue.value = "list";
+    console.log(res);
   } else {
     message.error(res.data.msg);
   }

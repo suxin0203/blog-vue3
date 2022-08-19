@@ -153,6 +153,7 @@ const searchCategory = (categoryId) => {
 }
 .nav {
   display: flex;
+
   font-size: 20px;
   padding-top: 20px;
   color: #64676a;
@@ -188,7 +189,7 @@ const searchCategory = (categoryId) => {
   }
 
   .search {
-    width: 95vh;
+    width: 95vw;
     &-input {
       width: 75vw;
     }
