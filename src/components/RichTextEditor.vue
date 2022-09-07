@@ -19,6 +19,7 @@
 
 <script setup>
 import "@wangeditor/editor/dist/css/style.css";
+
 import {
   onBeforeUnmount,
   ref,
@@ -28,6 +29,7 @@ import {
   inject,
 } from "vue";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
+
 const server_url = inject("server_url");
 
 // 编辑器实例，必须用 shallowRef，重要！
