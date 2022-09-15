@@ -7,11 +7,11 @@
       <div class="nav-new">
         <div class="nav-new-l">
           <div class="logo">
-            <img src="../assets/images/logo.png" alt="" />
+            <img src="../assets/images/logo.png" alt=""  />
           </div>
           <div class="nav-new-l-menu">
-            <div class="nav-new-title" @click="gohome">
-              <a href="http://162.14.73.22:7030/#/">首页</a>
+            <div class="nav-new-title" >
+              <a href="javascript:;" @click="gohome">首页</a>
             </div>
             <div class="nav-new-title">
               <a>
@@ -38,9 +38,9 @@
               </a>
             </div>
 
-            <div class="nav-new-title" @click="dashboard">
+            <!-- <div class="nav-new-title" @click="dashboard">
               <a>后台</a>
-            </div>
+            </div> -->
             <div class="nav-new-title">
               <a href="" @click="goback" class="goback"> 返回 </a>
             </div>
@@ -54,12 +54,7 @@
                 placeholder="请输入关键字"
                 class="nav-new-r-search-input"
               />
-              <n-button
-                type="primary"
-                ghost
-
-                class="nav-new-r-search-button"
-              >
+              <n-button type="primary" ghost class="nav-new-r-search-button">
                 搜索
               </n-button>
             </n-input-group>
@@ -73,11 +68,17 @@
 
       <!--头部↑-->
       <div class="main-body">
-        <div class="main-body-l">
-          <n-card>
+        <div class="main-body-l" >
+          <n-card id="main-page">
             <h1>{{ blogInfo.title }}</h1>
             <hr />
-            <div v-html="blogInfo.content"></div>
+            <div>
+              <div
+                v-html="blogInfo.content"
+                id="editor-content-view"
+                class="editor-content-view"
+              ></div>
+            </div>
           </n-card>
         </div>
 
@@ -102,7 +103,7 @@
                   </n-space>
                 </div>
               </n-card>
-              <n-card title="分类" hoverable>
+              <n-card title="分类" hoverable class="main-body-r-class">
                 <n-space>
                   <n-tag
                     :bordered="false"
@@ -134,7 +135,7 @@
                   </a>
                 </n-space>
               </n-card>
-              <n-card title="📖 如何成功" embedded :bordered="false" hoverable>
+              <n-card title="📖 如何成功" embedded :bordered="false" hoverable class="main-body-r-page">
                 <n-space>
                   <n-tag :bordered="false" type="info" size="small">
                     教程 </n-tag
@@ -164,7 +165,7 @@
           </div>
 
           <div style="color: #888888">
-            <p>© 2022 Yuexing - 也许，将会是最好用的博客管理系统！</p>
+            <p>© 2022 - 也许，将会是最好用的博客管理系统！</p>
             <p>Perhaps, it will be the best blog management system!</p>
           </div>
         </div>
@@ -179,10 +180,6 @@ import { reactive, ref, inject, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 // import { GameControllerOutline, GameController } from "@vicons/ionicons5";
 
-
-
-
-
 const axios = inject("axios");
 const message = inject("message");
 const dialog = inject("dialog");
@@ -195,7 +192,6 @@ const categoryOptions = ref([]); //分类列表
 
 const blogListInfo = ref([]);
 const isActive = ref(false);
-
 
 onMounted(() => {
   loadBlog();
@@ -323,6 +319,9 @@ const getScrollPosition = () => {
     justify-content: space-between;
     &-l {
       width: 74%;
+      #main-page{
+        height: 100%;
+      }
     }
     &-r {
       width: 24%;
@@ -472,30 +471,6 @@ const getScrollPosition = () => {
   color: gray;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 600px) {
   html,
   body {
@@ -527,13 +502,13 @@ const getScrollPosition = () => {
       }
     }
   }
- .nav-new-l .logo{
+  .nav-new-l .logo {
     height: 60px;
-
+    margin-left: 10px;
   }
   .nav-new-r {
     width: 100vw;
-height: 60px;
+    height: 60px;
 
     &-search {
       width: 95vw;
@@ -541,12 +516,10 @@ height: 60px;
       height: 80px;
       display: flex;
       align-items: center;
-
     }
   }
   .carousel1 {
     height: 300px;
-
   }
 
   .main {
@@ -561,8 +534,14 @@ height: 60px;
       }
       &-r {
         width: 95vw;
-        margin: 0 auto;
-        // background-color: pink;
+        margin: 10px auto;
+        &-class{
+          display: none;
+        }
+        &-page{
+          display: none;
+        }
+
       }
     }
   }
@@ -590,56 +569,7 @@ height: 60px;
           display: none;
         }
       }
-
     }
   }
 }
-
-
-:deep(.editor-content-view) {
-  border: 3px solid #ccc;
-  border-radius: 5px;
-  padding: 0 10px;
-  margin-top: 20px;
-  overflow-x: auto;
-}
-:deep(p,  li) {
-  white-space: pre-wrap; /* 保留空格 */
-}
-:deep(blockquote) {
-  border-left: 8px solid #d0e5f2;
-  padding: 10px 10px;
-  margin: 10px 0;
-  background-color: #f1f1f1;
-}
-:deep(code) {
-  font-family: monospace;
-  background-color: #eee;
-  padding: 3px;
-  border-radius: 3px;
-}
-:deep(pre > code) {
-  display: block;
-  padding: 10px;
-}
-:deep(table) {
-  border-collapse: collapse;
-}
-:deep(td, th) {
-  border: 1px solid #ccc;
-  min-width: 50px;
-  height: 20px;
-}
-:deep(th) {
-  background-color: #f1f1f1;
-}
-:deep( ul,  ol) {
-  padding-left: 20px;
-}
-:deep(input[type="checkbox"]) {
-  margin-right: 5px;
-}
-
-
-
 </style>

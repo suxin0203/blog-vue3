@@ -103,7 +103,8 @@
           <div
             v-for="blog in blogListInfo"
             :key="blog.id"
-            style="margin-bottom: 20px"
+
+            class="main-body-l-item"
           >
             <n-card
               content-style="color: #888888"
@@ -366,6 +367,9 @@ const getScrollPosition = () => {
     justify-content: space-between;
     &-l {
       width: 74%;
+      &-item:nth-child(n + 2){
+        margin-top: 20px;
+      }
     }
     &-r {
       width: 24%;
@@ -590,12 +594,23 @@ section .wave.wave4 {
     background-position-x: -1000px;
   }
 }
-
+.fenye {
+    width: 74%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
 @media screen and (max-width: 600px) {
   html,
   body {
     display: flex;
     width: 100vw;
+  }
+  .fenye {
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
   }
   .lbt {
     width: 100vw;
@@ -624,6 +639,7 @@ section .wave.wave4 {
   }
   .nav-new-l .logo {
     height: 60px;
+    margin-left: 10px;
   }
   .nav-new-r {
     width: 100vw;
@@ -658,10 +674,7 @@ section .wave.wave4 {
       }
     }
   }
-  // .fenye {
-  //   width: 95vw;
-  //   margin: 0 auto!important;
-  // }
+
   .footer {
     width: 100%;
 
