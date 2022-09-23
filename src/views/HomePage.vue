@@ -207,21 +207,8 @@
       <!--分页组件-->
       <n-divider />
     </div>
-    <div class="footer">
-      <div class="footer-main">
-        <div class="footer-main-l">
-          <div class="footer-main-l-l">
-            <a href="javascript:;">Suxin ·</a>
-          </div>
+    <MyFooterVue />
 
-          <div style="color: #888888">
-            <p>© 2022 - 也许，将会是最好用的博客管理系统！</p>
-            <p>Perhaps, it will be the best blog management system!</p>
-          </div>
-        </div>
-        <div class="footer-main-r">川ICP备202208282355号-1</div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -229,6 +216,7 @@
 import { reactive, ref, inject, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 // import { GameControllerOutline, GameController } from "@vicons/ionicons5";
+import MyFooterVue from "../components/MyFooter.vue";
 
 const axios = inject("axios");
 const message = inject("message");
@@ -477,41 +465,7 @@ const getScrollPosition = () => {
   }
 }
 
-.footer {
-  text-align: center;
-  line-height: 25px;
-  font-size: 16px;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: -1px -1px 10px #888888;
-  &-main {
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1200px;
-    margin: 0 auto;
-    &-l {
-      width: 60%;
-      height: 90px;
-      display: flex;
-      align-items: center;
 
-      & a:hover {
-        color: #36ad6a;
-      }
-      &-l {
-        border-right: 2px solid #e5e7eb;
-        padding-right: 25px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        font-size: 24px;
-        margin-right: 25px;
-      }
-    }
-  }
-}
 
 .create-time {
   font-size: 14px;
@@ -675,28 +629,6 @@ section .wave.wave4 {
     }
   }
 
-  .footer {
-    width: 100%;
-
-    &-main {
-      height: auto;
-      display: block;
-      width: 100vw;
-
-      &-l {
-        width: 100vw;
-        height: auto;
-        display: bldock;
-
-        & a:hover {
-          color: #36ad6a;
-        }
-        &-l {
-          display: none;
-        }
-      }
-    }
-  }
   .title-h1-page{
     display: none;
   }

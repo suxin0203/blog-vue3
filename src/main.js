@@ -8,8 +8,8 @@ import { router } from "./common/router";
 import axios from "axios";
 import { AdminStore } from "./stores/AdminStore";
 
-// axios.defaults.baseURL = "http://162.14.73.22:7031/";
-axios.defaults.baseURL = "http://localhost:8080/";
+axios.defaults.baseURL = "http://162.14.73.22:7031/";
+// axios.defaults.baseURL = "http://localhost:8080/";
 const { message, dialog, notification } = createDiscreteApi([
   "message",
   "dialog",
