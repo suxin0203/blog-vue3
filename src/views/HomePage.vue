@@ -103,7 +103,6 @@
           <div
             v-for="blog in blogListInfo"
             :key="blog.id"
-
             class="main-body-l-item"
           >
             <n-card
@@ -152,6 +151,7 @@
                     :bordered="false"
                     type="success"
                     v-for="categoryname in categoryOptions"
+                    :key="categoryname.value"
                   >
                     {{ categoryname.label }}
                   </n-tag>
@@ -208,7 +208,6 @@
       <n-divider />
     </div>
     <MyFooterVue />
-
   </div>
 </template>
 
@@ -344,7 +343,7 @@ const getScrollPosition = () => {
   position: relative;
   width: 100%;
   height: 100%;
-  background:linear-gradient(#ffffff 30%,#eee 40%);
+  background: linear-gradient(#ffffff 30%, #eee 40%);
 }
 .main {
   width: 1200px;
@@ -355,7 +354,7 @@ const getScrollPosition = () => {
     justify-content: space-between;
     &-l {
       width: 74%;
-      &-item:nth-child(n + 2){
+      &-item:nth-child(n + 2) {
         margin-top: 20px;
       }
     }
@@ -465,8 +464,6 @@ const getScrollPosition = () => {
   }
 }
 
-
-
 .create-time {
   font-size: 14px;
   color: gray;
@@ -549,11 +546,11 @@ section .wave.wave4 {
   }
 }
 .fenye {
-    width: 74%;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
+  width: 74%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 @media screen and (max-width: 600px) {
   html,
   body {
@@ -629,7 +626,7 @@ section .wave.wave4 {
     }
   }
 
-  .title-h1-page{
+  .title-h1-page {
     display: none;
   }
 }

@@ -5,7 +5,7 @@
         <div
           v-for="blog in blogListInfo"
           :key="blog.id"
-          style="margin-bottom: 20px"
+          style="margin-bottom: 10px"
         >
           <n-card :title="blog.title" hoverable>
             {{ blog.content }}
@@ -14,6 +14,8 @@
                 <div style="font-size: 14px">
                   发布时间：{{ blog.create_time }}
                 </div>
+              </n-space>
+              <n-space>
                 <n-button ghost @click="toUpdate(blog)"> 修改 </n-button>
                 <n-button ghost @click="toDelete(blog)"> 删除 </n-button>
               </n-space>
@@ -22,7 +24,7 @@
         </div>
 
         <n-space>
-          <div v-for="pageNum in pageInfo.pageCount" @click="toPage(pageNum)">
+          <div v-for="pageNum in pageInfo.pageCount" :key="pageNum" @click="toPage(pageNum)">
             <n-button
               ghost
               :type="pageNum == pageInfo.page ? 'info' : 'default'"
@@ -63,7 +65,7 @@
           </n-form-item>
           <n-form-item label="ID">
             <n-input-number
-            style="width: 100%;"
+              style="width: 100%"
               v-model:value="updateArticle.id"
               :show-button="false"
               placeholder="请输入id"

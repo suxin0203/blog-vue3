@@ -109,6 +109,7 @@
                     :bordered="false"
                     type="success"
                     v-for="categoryname in categoryOptions"
+                    :key="categoryname.value"
                   >
                     {{ categoryname.label }}
                   </n-tag>
